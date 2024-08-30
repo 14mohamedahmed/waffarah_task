@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waffaraha_task/app_routing/route_names.dart';
 import 'package:waffaraha_task/app_routing/routing_data.dart';
+import 'package:waffaraha_task/core/services/services_locator.dart';
+import 'package:waffaraha_task/features/photos/presentation/controller/photos_bloc.dart';
+import 'package:waffaraha_task/features/photos/presentation/screen/photos_screen.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -19,8 +23,14 @@ class AppRouter {
     }
 
     switch (routingData.route) {
-      case RouteNames.startPage:
-        return _getPageRoute(Container(), settings);
+      case RouteNames.photosPage:
+        return _getPageRoute(
+          BlocProvider<PhotosBloc>(
+            create: (context) => getIt<PhotosBloc>()..add(GetPhotosEvent()),
+            child: const PhotosScreen(),
+          ),
+          settings,
+        );
       default:
         return _getPageRoute(Container(), settings);
     }

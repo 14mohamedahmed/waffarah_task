@@ -1,3 +1,3 @@
 class RouteNames {
-  static const String startPage = "/";
+  static const String photosPage = "/";
 }

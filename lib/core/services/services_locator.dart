@@ -6,6 +6,7 @@ import 'package:waffaraha_task/features/photos/data/datesource/photos_remote_dat
 import 'package:waffaraha_task/features/photos/data/repository/photos_repository_impl.dart';
 import 'package:waffaraha_task/features/photos/domain/repository/photos_repository.dart';
 import 'package:waffaraha_task/features/photos/domain/usecase/get_photos_usecase.dart';
+import 'package:waffaraha_task/features/photos/presentation/controller/photos_bloc.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -21,5 +22,5 @@ _photosDI() {
   getIt.registerLazySingleton<PhotosRepository>(
       () => PhotosRepositoryImpl(getIt()));
   getIt.registerLazySingleton(() => GetPhotosUsecase(getIt()));
-  // getIt.registerFactory(() => LoginBloc(getIt()));
+  getIt.registerFactory(() => PhotosBloc(getIt()));
 }
