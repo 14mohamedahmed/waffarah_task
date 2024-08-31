@@ -70,7 +70,7 @@ class PaginatorComponent extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "${state.photos.length ~/ context.read<PhotosBloc>().itemPerPage}",
+                              "${(context.read<PhotosBloc>().getPhotosAfterFiliteration().length ~/ context.read<PhotosBloc>().itemPerPage)}",
                           style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             color: AppColors.textColor,

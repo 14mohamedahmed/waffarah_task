@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:waffaraha_task/components/custom/action_button.dart';
+import 'package:waffaraha_task/components/packages/drop_down/drop_down_model.dart';
+import 'package:waffaraha_task/components/packages/drop_down/input_drop_down.dart';
 import 'package:waffaraha_task/core/services/navigation_service.dart';
 import 'package:waffaraha_task/core/services/services_locator.dart';
 import 'package:waffaraha_task/core/utils/app_colors.dart';
@@ -96,7 +98,57 @@ class _SortFiliterBottomSheet extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 15),
+          const Text(
+            "Filiter By",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: AppColors.textColor,
+            ),
+          ),
+          const SizedBox(height: 5),
+          Row(
+            children: [
+              const Text(
+                "Album id",
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: BlocSelector<PhotosBloc, PhotosState, int>(
+                  selector: (state) => state.filiterByAlbumId,
+                  builder: (context, albumId) {
+                    return InputDropDown(
+                      hint: "Choose album id",
+                      intialItems: albumId == 0
+                          ? null
+                          : [DropDownModel("ID: $albumId", albumId)],
+                      items: context.watch<PhotosBloc>().albumIds.map((e) {
+                        return DropDownModel(
+                          "ID: $e",
+                          e,
+                        );
+                      }).toList(),
+                      multipleSelection: false,
+                      onChange: (List<DropDownModel> value) {
+                        context.read<PhotosBloc>().add(
+                              OnChangeFiliterByAlbumId(
+                                value.isEmpty ? 0 : value.first.value,
+                              ),
+                            );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
           ActionButton(
             text: "Apply",
             onPressed: () {
@@ -105,7 +157,7 @@ class _SortFiliterBottomSheet extends StatelessWidget {
             },
             borderRadius: 8,
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 20),
         ],
       ),
     );

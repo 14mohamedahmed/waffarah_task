@@ -17,6 +17,7 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
     on<OnApplyPhotosFilterAndSortEvent>(_onApplyPhotosActionsHandler);
     on<OnChangeSortByTitle>(_onChangeSortByTitle);
     on<OnChangeSortByAlbumId>(_onChangeSortByAlbumId);
+    on<OnChangeFiliterByAlbumId>(_onChangeFiliterByAlbumId);
   }
 
   final int itemPerPage = 10;
@@ -43,31 +44,47 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
   }
 
   List<PhotoEntity> _getCurrentPagePhotos(List<PhotoEntity> photos) {
-    final startIndex = state.currentPage * itemPerPage;
-    final endIndex = (state.currentPage + 1) * itemPerPage;
+    // remove 1 from current page if current page is 1 because we need to get the list from index 0 not index 10
+    final startIndex = (state.currentPage - 1) * itemPerPage;
+    final endIndex = (state.currentPage) * itemPerPage;
     return photos.sublist(startIndex, endIndex);
   }
 
   _onChangePageHandler(OnChangePageEvent event, Emitter<PhotosState> emit) {
+    // this line to avoid make current page to 0 if it is 1
     if (state.currentPage == 1 && event.page == 0) return;
-    final photos = _handlePhotosFiliterSeletions();
-    emit(state.copyWith(
-      currentPage: event.page,
-      currentPagePhotos: _getCurrentPagePhotos(photos),
-    ));
+    final photos = getPhotosAfterFiliteration();
+    // this line to avoid make current page larger than total pages
+    if ((photos.length ~/ itemPerPage) < event.page) return;
+    emit(state.copyWith(currentPage: event.page));
+    emit(state.copyWith(currentPagePhotos: _getCurrentPagePhotos(photos)));
   }
 
   _onApplyPhotosActionsHandler(
       OnApplyPhotosFilterAndSortEvent event, Emitter<PhotosState> emit) {
     emit(state.copyWith(getPhotosState: RequestStatus.loading, currentPage: 1));
-    final photos = _handlePhotosFiliterSeletions();
+    final photos = getPhotosAfterFiliteration();
     emit(state.copyWith(
       getPhotosState: RequestStatus.success,
       currentPagePhotos: _getCurrentPagePhotos(photos),
     ));
   }
 
-  List<PhotoEntity> _handlePhotosFiliterSeletions() {
+  _onChangeSortByTitle(OnChangeSortByTitle event, Emitter<PhotosState> emit) {
+    emit(state.copyWith(soryBy: SortBy.title));
+  }
+
+  _onChangeSortByAlbumId(
+      OnChangeSortByAlbumId event, Emitter<PhotosState> emit) {
+    emit(state.copyWith(soryBy: SortBy.albumId));
+  }
+
+  _onChangeFiliterByAlbumId(
+      OnChangeFiliterByAlbumId event, Emitter<PhotosState> emit) {
+    emit(state.copyWith(filiterByAlbumId: event.id));
+  }
+
+  List<PhotoEntity> getPhotosAfterFiliteration() {
     List<PhotoEntity> photos = state.photos;
     if (state.soryBy == SortBy.title) {
       photos.sort((a, b) => a.title.compareTo(b.title));
@@ -81,14 +98,5 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
           .toList();
     }
     return photos;
-  }
-
-  _onChangeSortByTitle(OnChangeSortByTitle event, Emitter<PhotosState> emit) {
-    emit(state.copyWith(soryBy: SortBy.title));
-  }
-
-  _onChangeSortByAlbumId(
-      OnChangeSortByAlbumId event, Emitter<PhotosState> emit) {
-    emit(state.copyWith(soryBy: SortBy.albumId));
   }
 }
