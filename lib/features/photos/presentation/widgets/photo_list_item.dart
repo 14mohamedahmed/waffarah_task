@@ -12,16 +12,14 @@ class PhotoListItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: 150,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            border: Border.all(
-              color: AppColors.lightGrey,
-            ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            height: 150,
+            width: double.infinity,
+            decoration: const BoxDecoration(color: AppColors.imageBG),
+            child: ImageNetworkCashed(photoEntity.thumbnailUrl),
           ),
-          child: ImageNetworkCashed(photoEntity.thumbnailUrl),
         ),
         const SizedBox(height: 8),
         Text(

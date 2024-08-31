@@ -15,6 +15,19 @@ class OnChangePageEvent extends PhotosEvent {
   const OnChangePageEvent(this.page);
 }
 
-class SortPhotosEvent extends PhotosEvent {}
+class OnChangeSortByTitle extends PhotosEvent {
+  final SortBy value;
+  const OnChangeSortByTitle(this.value);
+}
 
-class FiliterPhotosEvent extends PhotosEvent {}
+class OnChangeSortByAlbumId extends PhotosEvent {
+  final SortBy value;
+  const OnChangeSortByAlbumId(this.value);
+}
+
+class OnChangeFiliterByAlbumId extends PhotosEvent {
+  final int id;
+  const OnChangeFiliterByAlbumId(this.id);
+}
+
+class OnApplyPhotosFilterAndSortEvent extends PhotosEvent {}
