@@ -1,0 +1,136 @@
+import 'package:waffaraha_task/features/photos/domain/entity/photo_entity.dart';
+
+final List<PhotoEntity> photosEntity = [
+  const PhotoEntity(
+    albumId: 2,
+    id: 1,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 2,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 3,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 4,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 5,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 6,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 7,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 8,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 9,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 10,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 11,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 1,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 2,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 3,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 4,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 5,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 6,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 7,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 8,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 9,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 10,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+  const PhotoEntity(
+    albumId: 2,
+    id: 11,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+  ),
+];

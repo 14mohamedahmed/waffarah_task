@@ -35,7 +35,7 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
           state.copyWith(
             getPhotosState: RequestStatus.success,
             photos: photos,
-            currentPagePhotos: _getCurrentPagePhotos(photos),
+            currentPagePhotos: getCurrentPagePhotos(photos),
           ),
         );
         albumIds = photos.map((e) => e.albumId).toSet();
@@ -43,7 +43,7 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
     );
   }
 
-  List<PhotoEntity> _getCurrentPagePhotos(List<PhotoEntity> photos) {
+  List<PhotoEntity> getCurrentPagePhotos(List<PhotoEntity> photos) {
     // remove 1 from current page if current page is 1 because we need to get the list from index 0 not index 10
     final startIndex = (state.currentPage - 1) * itemPerPage;
     final endIndex = (state.currentPage) * itemPerPage;
@@ -57,7 +57,7 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
     // this line to avoid make current page larger than total pages
     if ((photos.length ~/ itemPerPage) < event.page) return;
     emit(state.copyWith(currentPage: event.page));
-    emit(state.copyWith(currentPagePhotos: _getCurrentPagePhotos(photos)));
+    emit(state.copyWith(currentPagePhotos: getCurrentPagePhotos(photos)));
   }
 
   _onApplyPhotosActionsHandler(
@@ -66,7 +66,7 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
     final photos = getPhotosAfterFiliteration();
     emit(state.copyWith(
       getPhotosState: RequestStatus.success,
-      currentPagePhotos: _getCurrentPagePhotos(photos),
+      currentPagePhotos: getCurrentPagePhotos(photos),
     ));
   }
 

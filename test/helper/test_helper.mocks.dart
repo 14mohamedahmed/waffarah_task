@@ -9,9 +9,9 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:waffaraha_task/core/network/models/api_error_model.dart' as _i5;
 import 'package:waffaraha_task/core/network/models/api_success_model.dart'
-    as _i10;
+    as _i11;
 import 'package:waffaraha_task/core/network/network_provider/api_services.dart'
-    as _i9;
+    as _i10;
 import 'package:waffaraha_task/features/photos/data/datesource/photos_remote_datasource.dart'
     as _i7;
 import 'package:waffaraha_task/features/photos/data/model/phote_model.dart'
@@ -20,6 +20,8 @@ import 'package:waffaraha_task/features/photos/domain/entity/photo_entity.dart'
     as _i6;
 import 'package:waffaraha_task/features/photos/domain/repository/photos_repository.dart'
     as _i3;
+import 'package:waffaraha_task/features/photos/domain/usecase/get_photos_usecase.dart'
+    as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -92,16 +94,43 @@ class MockPhotosRemoteDataSource extends _i1.Mock
       ) as _i4.Future<List<_i8.PhoteModel>>);
 }
 
+/// A class which mocks [GetPhotosUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetPhotosUsecase extends _i1.Mock implements _i9.GetPhotosUsecase {
+  MockGetPhotosUsecase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.ApiFaliureModel, List<_i6.PhotoEntity>>> call() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue: _i4.Future<
+                _i2.Either<_i5.ApiFaliureModel, List<_i6.PhotoEntity>>>.value(
+            _FakeEither_0<_i5.ApiFaliureModel, List<_i6.PhotoEntity>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.ApiFaliureModel, List<_i6.PhotoEntity>>>);
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i9.ApiService {
+class MockApiService extends _i1.Mock implements _i10.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i10.ApiSuccessModel>> get(
+  _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i11.ApiSuccessModel>> get(
     String? path, {
     Map<String, dynamic>? queryParameters = const {},
   }) =>
@@ -112,8 +141,8 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
           {#queryParameters: queryParameters},
         ),
         returnValue: _i4.Future<
-                _i2.Either<_i5.ApiFaliureModel, _i10.ApiSuccessModel>>.value(
-            _FakeEither_0<_i5.ApiFaliureModel, _i10.ApiSuccessModel>(
+                _i2.Either<_i5.ApiFaliureModel, _i11.ApiSuccessModel>>.value(
+            _FakeEither_0<_i5.ApiFaliureModel, _i11.ApiSuccessModel>(
           this,
           Invocation.method(
             #get,
@@ -121,10 +150,10 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
             {#queryParameters: queryParameters},
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i10.ApiSuccessModel>>);
+      ) as _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i11.ApiSuccessModel>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i10.ApiSuccessModel>> post(
+  _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i11.ApiSuccessModel>> post(
     String? path, {
     Map<String, dynamic>? body = const {},
   }) =>
@@ -135,8 +164,8 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
           {#body: body},
         ),
         returnValue: _i4.Future<
-                _i2.Either<_i5.ApiFaliureModel, _i10.ApiSuccessModel>>.value(
-            _FakeEither_0<_i5.ApiFaliureModel, _i10.ApiSuccessModel>(
+                _i2.Either<_i5.ApiFaliureModel, _i11.ApiSuccessModel>>.value(
+            _FakeEither_0<_i5.ApiFaliureModel, _i11.ApiSuccessModel>(
           this,
           Invocation.method(
             #post,
@@ -144,5 +173,5 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
             {#body: body},
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i10.ApiSuccessModel>>);
+      ) as _i4.Future<_i2.Either<_i5.ApiFaliureModel, _i11.ApiSuccessModel>>);
 }
